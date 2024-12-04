@@ -6,6 +6,7 @@ Skoluppgft, var lite krånligt att jobba med Api's för första gången så desi
 - Använder API för att få planeternas information
 - En fungerande "searchbar"
 - De sökta planeternas information uppdateras dynamiskt beroende på vilken planet man sökte på.
+- "Stjärnorna" i bakgrunden är dynamiska, man får aldrig samma bakgrund två gånger om.
 
 ## Installation
 
