@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planetsida</title>
+  <link rel="stylesheet" href="planet.css">
+</head>
+
+
+<body>
+
+  <section class="planet-info-container">
+    <article class="planet-info">
+      <h1 id="planet-name">Planets namn</h1>
+      <h2 id="planet-alias">Alias</h2>
+      <p id="planet-description">Här visas beskrivningen av planeten.</p>
+      <article class="planet-details">
+        <article class="detail">
+          <h3>OMKRETS</h3>
+          <p id="planet-circumference">-</p>
+        </article>
+        <article class="detail">
+          <h3>KM FRÅN SOLEN</h3>
+          <p id="planet-distance">-</p>
+        </article>
+        <article class="detail">
+          <h3>MAX TEMPERATUR</h3>
+          <p id="planet-max-temp">-</p>
+        </article>
+        <article class="detail">
+          <h3>MIN TEMPERATUR</h3>
+          <p id="planet-min-temp">-</p>
+        </article>
+        <article class="detail">
+          <h3>MÅNAR</h3>
+          <p id="planet-moons">-</p>
+        </article>
+      </article>
+    </article>
+    <button class="back-button" onclick="window.location.href='index.html'">Tillbaka till startsidan</button>
+  </section>
+
+
+  <!-- Här kommer alla Planeternas data/beskrivning etc -->
+  <script>
+    const planets = {
+  jorden: {
+    name: "Jorden",
+    alias: "Tellus",
+    description:
+      "Jorden är den största och mest kompakta av de inre planeterna. Jorden är den enda av planeterna som konstaterats ha geologisk aktivitet och är även den enda planeten som med säkerhet härbärgerar liv. Dess flytande hydrosfär är unik bland stenplaneterna och jorden är också den enda planeten hos vilken plattektonik har observerats. Jordens atmosfär skiljer sig markant från de andra planeternas, vilket förklaras av att närvaron av levande organismer har förändrat atmosfären till att innehålla fritt syre, i dag motsvarande 21 procent.",
+    circumference: "40 075 km",
+    distance: "149 600 000 km",
+    maxTemp: "60°C",
+    minTemp: "-50°C",
+    moons: "Månen",
+  },
+  mars: {
+    name: "Mars",
+    alias: "Mars",
+    description:
+      "Mars är den fjärde planeten från solen och solsystemets näst minsta planet. Den har fått sitt namn efter den romerska krigsguden Mars och kallas ibland för den röda planeten på grund av sitt rödaktiga utseende. Den röda färgen beror på stora mängder järnoxid som finns fördelat över ytan och i atmosfären.",
+    circumference: "21 344 km",
+    distance: "227 940 000 km",
+    maxTemp: "-60°C",
+    minTemp: "-140°C",
+    moons: "Phobos, Deimos",
+  },
+  merkurius: {
+    name: "Merkurius",
+    alias: "Mercurialis",
+    description:
+      "Merkurius är den planet som ligger närmast solen och är den minsta planeten (0,055 jordmassor). Merkurius har inga naturliga satelliter och dess enda kända geologiska strukturer förutom nedslagskratrar är kullar, klippor och dalar som troligen bildades under dess tidigaste historia. Merkurius nästan obetydliga atmosfär består av atomer som blåsts dit från solen av solvinden. Den relativt stora järnkärnan och tunna manteln har inte kunnat förklaras, men den främsta hypotesen är att de yttre lagren försvann från planeten vid en enorm kollision med ett annat planetariskt objekt.",
+    circumference: "15 329 km",
+    distance: "57 910 000 km",
+    maxTemp: "430°C",
+    minTemp: "-173°C",
+    moons: "Ingen",
+  },
+  venus: {
+    name: "Venus",
+    alias: "Den heta planeten",
+    description:
+      "Venus är den andra planeten från solen och har en extremt tjock atmosfär, vilket leder till ett enormt växthuseffekt och höga temperaturer...",
+    circumference: "38 025 km",
+    distance: "108 200 000 km",
+    maxTemp: "430°C",
+    minTemp: "-173°C",
+    moons: "Ingen",
+  },
+  jupiter: {
+    name: "Jupiter",
+    alias: "Den största planeten",
+    description:
+      "Jupiter är den största planeten i solsystemet och är en gasjätte. Den är känd för sina stora stormar, som den berömda Stora röda fläcken...",
+    circumference: "439 264 km",
+    distance: "778 330 000 km",
+    maxTemp: "-108°C",
+    minTemp: "-163°C",
+    moons: "Io, Europa, Ganymedes, Callisto (och många fler)",
+  },
+  saturnus: {
+    name: "Saturnus",
+    alias: "Planet med ringar",
+    description:
+      "Saturnus är den andra största planeten i solsystemet och känd för sina imponerande ringar, som består av is och sten...",
+    circumference: "365 882 km",
+    distance: "1 427 000 000 km",
+    maxTemp: "-139°C",
+    minTemp: "-178°C",
+    moons: "Titan, Rhea, Enceladus, Mimas (och fler)",
+  },
+  uranus: {
+    name: "Uranus",
+    alias: "Den lutande planeten",
+    description:
+      "Uranus är en isjätte och den sjunde planeten från solen. Den har en mycket lutande rotationsaxel och är också den första planeten som upptäcktes med teleskop...",
+    circumference: "159 354 km",
+    distance: "2 871 000 000 km",
+    maxTemp: "-214°C",
+    minTemp: "-224°C",
+    moons: "Titania, Oberon, Miranda, Ariel (och fler)",
+  },
+  neptunus: {
+    name: "Neptunus",
+    alias: "Den blå planeten",
+    description:
+      "Neptunus är den åttonde planeten från solen och den sista gasjätten. Den har starka vindar och en karakteristisk blå färg på grund av metan i atmosfären...",
+    circumference: "155 600 km",
+    distance: "4 498 000 000 km",
+    maxTemp: "-214°C",
+    minTemp: "-233°C",
+    moons: "Triton, Nereid, Proteus (och fler)",
+  },
+};
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const planetName = urlParams.get("planet");
+
+    if (planetName) {
+      const planetKey = planetName.toLowerCase(); // Gör om till lowercase för att matcha objektet
+      if (planets[planetKey]) {
+        const planet = planets[planetKey];
+        document.getElementById("planet-name").textContent = planet.name;
+        document.getElementById("planet-alias").textContent = planet.alias;
+        document.getElementById("planet-description").textContent = planet.description;
+        document.getElementById("planet-circumference").textContent = planet.circumference;
+        document.getElementById("planet-distance").textContent = planet.distance;
+        document.getElementById("planet-max-temp").textContent = planet.maxTemp;
+        document.getElementById("planet-min-temp").textContent = planet.minTemp;
+        document.getElementById("planet-moons").textContent = planet.moons;
+      } else {
+        document.querySelector(".planet-info-container").innerHTML =
+          "<h1>Ingen data hittades för denna planet.</h1>";
+      }
+    } else {
+      document.querySelector(".planet-info-container").innerHTML =
+        "<h1>Ingen planet vald.</h1>";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+body {
+  margin-left: 5%;
+  margin: 10px;
+  height: 100vh;
+
+  background: radial-gradient(circle, #000022, #000000);
+  overflow: hidden;
+  color: white;
+}
+
+.header{
+  display: flex;
+  flex-direction: row;
+  margin: 0px;
+  padding: 10px;
+  position: relative;
+
+  top: 50%;
+  left: 50%;
+}
+
+
+h1{
+font-size: 40px;
+}
+
+h2{
+  color: darkgoldenrod;
+}
+
+h3{
+  font-size: small;
+}
+
+
+/* Formulärets container */
+form {
+  background: rgba(255, 255, 255, 0.05);  /* Halvgenomskinlig bakgrund */
+  padding: 20px;
+  border-radius: 8px;  /* Mjukare rundade hörn */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);  /* Skugga för djup */
+  text-align: center;
+  width: 100%;
+  max-width: 400px;  /* Smalare formulär */
+  transition: all 0.3s ease;
+}
+
+/* Formulärets etikett */
+label {
+  font-size: 14px;
+  margin-bottom: 8px;
+  display: block;
+  color: #FFD700;  
+  font-weight: bold;
+}
+
+/* Sökfältet */
+input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  background-color: #333;  
+  color: white;
+  margin-bottom: 15px;
+  transition: background-color 0.3s ease;
+}
+
+/* Förändring av inputfältet när det är fokuserat */
+input[type="text"]:focus {
+  background-color: #444;  
+  outline: none;
+}
+
+/* Söknapp */
+button {
+  background-color: #FFD700;  
+  color: #0B132B;  
+  padding: 10px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+}
+
+/* Förändring av knappen när man håller muspekaren över */
+button:hover {
+  background-color: #E5C100;  
+}
+
+/* Förhindrar att formuläret tar upp mer än nödvändigt */
+form button[type="submit"] {
+  margin-top: 8px;
+}
+
+/*Styling för Solen, Planeterna och "containern som allting hålls i"*/
+
+.solar-system {
+  width: 800px;
+  height: 800px;
+}
+
+.sun {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, #FFD700, #FF4500);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 50px 20px rgba(255, 223, 0, 0.8);
+}
+
+.planet {
+  position: absolute;
+  border-radius: 50%;
+  z-index: 10000;
+
+  animation: rotate-planet 15s linear infinite, pulse 2s infinite ease-in-out, glow 3s infinite alternate;
+}
+
+.name {
+  position: absolute;
+  top: -20px; /* Flytta namnet ovanför objektet */
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 10px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.planet .name {
+  top: 30px; /* Flytta namnet under planeten */
+  font-size: 6px;
+  display: none;
+}
+
+/*Styling för bakgrunds stjärnorna*/
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%; /* Gör punkterna runda */
+  box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.8); /* Glow-effekt */
+  
+  /* Lägg till både blinkande och roterande effekt */
+  animation: rotateAndBlink 10s linear infinite, blinkStar 5s ease-in-out infinite; /* Använder två animeringar */
+  animation-delay: calc(-1.5s * var(--star-random)); /* Slumpmässig fördröjning */
+}
+
+/* Animering för rotation */
+@keyframes rotateAndBlink {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Animering för att få stjärnorna att blinka */
+@keyframes blinkStar {
+  0%, 100% {
+    opacity: 1; 
+  }
+  50% {
+    opacity: 0; 
+  }
+}
+
+
+/*Olika Animationer för planeterna.*/
+
+
+/* Animation som får planeterna att blinka blått*/
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(131, 214, 247, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 15px rgb(103, 207, 255);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(131, 214, 247, 0.5);
+  }
+}
+
+/* Animation som får planeterna att bli lite större*/
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.1); 
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+}
+
+/* Animation som får planeterna att rotera*/
+@keyframes rotate-planet {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
